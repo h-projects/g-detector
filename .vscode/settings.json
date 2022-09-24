@@ -1,0 +1,14 @@
+{
+  "eslint.probe": [
+    "javascript",
+    "typescript"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": false
+  },
+  "[prisma]": {
+    "editor.formatOnSave": true
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
