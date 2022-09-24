@@ -43,5 +43,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "unbuild": "^0.8.11",
     "vitest": "^0.23.4"
+  },
+  "engines": {
+    "node": ">=15.0.0"
   }
 }
