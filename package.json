@@ -1,13 +1,12 @@
 {
   "name": "g-detector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A powerful JavaScript library to detect the letter G",
   "scripts": {
     "test": "vitest run",
     "build": "unbuild",
     "lint": "eslint .",
-    "ts": "tsc --noEmit",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "ts": "tsc --noEmit"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
