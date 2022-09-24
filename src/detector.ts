@@ -1,5 +1,5 @@
 import { checkHigh, checkLow, checkMedium } from './levels.js';
-import whitelist from './whitelist.json' assert { type: 'json' };
+import allowlist from './allowlist.json' assert { type: 'json' };
 
 export enum Level {
   Low,
@@ -9,7 +9,7 @@ export enum Level {
 
 export function detect(content: string, level: Level | 'low' | 'medium' | 'high'): boolean {
   let cleanContent = content.replaceAll(/[.,]/gu, '').toLowerCase();
-  for (const word of whitelist) {
+  for (const word of allowlist) {
     cleanContent = cleanContent.replaceAll(RegExp(`\\b${word}\\b`, 'giu'), '');
   }
 
