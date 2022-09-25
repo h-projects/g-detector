@@ -18,6 +18,6 @@
 
     "pretty": true,
     "noEmitOnError": true,
-    "strict": true,
+    "strict": true
   }
 }

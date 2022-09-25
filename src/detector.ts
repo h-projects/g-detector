@@ -1,5 +1,5 @@
+import allowlist from './allowlist.json';
 import { checkHigh, checkLow, checkMedium } from './levels.js';
-import allowlist from './allowlist.json' assert { type: 'json' };
 
 export enum Level {
   Low,
