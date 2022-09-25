@@ -20,7 +20,7 @@
     "dist"
   ],
   "author": "Superchupu",
-  "license": "Apache-2.0",
+  "license": "ISC",
   "keywords": [
     "gasbot",
     "detector",
