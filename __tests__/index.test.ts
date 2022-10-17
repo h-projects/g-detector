@@ -6,6 +6,7 @@ describe('low detector', () => {
     expect(detect('g', Level.Low)).toStrictEqual(true);
     expect(detect('gggggggg g', Level.Low)).toStrictEqual(true);
     expect(detect('g⅁ 🅶🅶🅶', Level.Low)).toStrictEqual(true);
+    expect(detect('🅶🅖🄶🄖ｇＧꬶꞬꞡꞠℊḡḠᶢᶃᵹᵷᵍᴳʛǵǤ⅁ĜĝĞğɢɡɠƓģĢġĠgG', Level.Low)).toStrictEqual(true);
   });
 
   test('returns false on a non-g string', () => {
