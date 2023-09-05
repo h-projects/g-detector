@@ -24,6 +24,25 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+  biome:
+    name: Biome
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Biome
+        run: npm run check
+
   typescript:
     name: TypeScript
     runs-on: ubuntu-latest
@@ -41,7 +60,7 @@ jobs:
         run: npm ci
 
       - name: Run TypeScript compiler
-        run: npm run ts
+        run: npm run typecheck
 
   vitest:
     name: Vitest
