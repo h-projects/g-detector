@@ -1,6 +1,6 @@
 {
   "name": "g-detector",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A powerful JavaScript library to detect the letter G",
   "scripts": {
     "test": "vitest run",
