@@ -8,9 +8,9 @@ export enum Level {
 }
 
 export function detect(content: string, level: Level | 'low' | 'medium' | 'high'): boolean {
-  let cleanContent = content.replaceAll(/[.,]/gu, '').toLowerCase();
+  let cleanContent = content.replaceAll(/[.,ᅟᅠㅤﾠ]/gu, '').toLowerCase();
   for (const word of allowlist) {
-    cleanContent = cleanContent.replaceAll(RegExp(`\\b${word}\\b`, 'giu'), '');
+    cleanContent = cleanContent.replaceAll(RegExp(`(?<=^|\\P{L})${word}(?=\\P{L}|$)`, 'giu'), '');
   }
 
   switch (level) {

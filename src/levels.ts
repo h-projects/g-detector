@@ -1,7 +1,5 @@
 import blocklist from './blocklist.json' assert { type: 'json' };
 
-const boundaries = '[\\s!-/:-@[-`{-¿ -⁯]';
-
 export function checkLow(content: string): boolean {
   if (!/[^\s]/u.test(content)) {
     return false;
@@ -11,7 +9,7 @@ export function checkLow(content: string): boolean {
 }
 
 export function checkMedium(content: string): boolean {
-  return RegExp(`(?<=${boundaries}|^)[${blocklist}]+(?=${boundaries}|$)`, 'iu').test(content) || checkLow(content);
+  return RegExp(`(?<=^|\\P{L})[${blocklist}]+(?=\\P{L}|$)`, 'iu').test(content) || checkLow(content);
 }
 
 export function checkHigh(content: string): boolean {

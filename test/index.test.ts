@@ -25,6 +25,8 @@ describe('medium detector', () => {
   test('returns true on a string that has standalone g', () => {
     expect(detect('g', Level.Medium)).toBe(true);
     expect(detect('g-g', Level.Medium)).toBe(true);
+    expect(detect('g_eometry dash', Level.Medium)).toBe(true);
+    expect(detect('weird unicode space characters: ᅟg ᅠg ㅤg ﾠg', Level.Medium)).toBe(true);
     expect(detect('I AM A SPY. I LOVE G!!!', Level.Medium)).toBe(true);
     expect(detect('the letter g tho', Level.Medium)).toBe(true);
     expect(detect('g!asbot', Level.Medium)).toBe(true);
