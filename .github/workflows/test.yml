@@ -5,25 +5,6 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  lint:
-    name: ESLint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Node v18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ESLint
-        run: npm run lint
-
   biome:
     name: Biome
     runs-on: ubuntu-latest
@@ -31,17 +12,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node v18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
 
       - name: Run Biome
-        run: npm run check
+        run: biome ci .
+
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        uses: ./.github/actions/pnpm
+
+      - name: Run ESLint
+        run: pnpm run lint
 
   typescript:
     name: TypeScript
@@ -50,17 +43,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node v18
-        uses: actions/setup-node@v3
+      - name: Install Node 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
+          node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        uses: ./.github/actions/pnpm
 
       - name: Run TypeScript compiler
-        run: npm run typecheck
+        run: pnpm run typecheck
 
   vitest:
     name: Vitest
@@ -69,14 +61,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node v18
-        uses: actions/setup-node@v3
+      - name: Install Node 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
+          node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        uses: ./.github/actions/pnpm
 
       - name: Run Vitest
-        run: npm run test
+        run: pnpm run test

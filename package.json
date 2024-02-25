@@ -9,8 +9,7 @@
     "lint:fix": "eslint . --fix",
     "check": "biome format .",
     "format": "biome format --write .",
-    "typecheck": "tsc --noEmit",
-    "postversion": "git tag -d v%npm_package_version% && git tag %npm_package_version%"
+    "typecheck": "tsc --noEmit"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -39,15 +38,16 @@
   },
   "homepage": "https://github.com/h-projects/g-detector#readme",
   "devDependencies": {
-    "@biomejs/biome": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "eslint": "^8.48.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.3"
+    "@biomejs/biome": "^1.5.3",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.57.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
   },
   "engines": {
     "node": ">=15.0.0"
-  }
+  },
+  "packageManager": "pnpm@8.15.4"
 }

@@ -1,4 +1,4 @@
-import blocklist from './blocklist.json' assert { type: 'json' };
+import blocklist from './blocklist.json' with { type: 'json' };
 
 export function checkLow(content: string): boolean {
   if (!/[^\s]/u.test(content)) {
