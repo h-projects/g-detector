@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { detect, Level } from '../src/index.js';
+import { Level, detect } from '../src/index.js';
 
 describe('low detector', () => {
   test('returns true on a g-only string', () => {
