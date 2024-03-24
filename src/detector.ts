@@ -1,4 +1,4 @@
-import allowlist from './allowlist.json';
+import { allowlist } from './allowlist.js';
 import { checkHigh, checkLow, checkMedium } from './levels.js';
 
 export enum Level {

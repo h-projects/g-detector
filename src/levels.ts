@@ -1,4 +1,4 @@
-import blocklist from './blocklist.json' with { type: 'json' };
+import { blocklist } from './blocklist.js';
 
 export function checkLow(content: string): boolean {
   if (!/[^\s]/u.test(content)) {
