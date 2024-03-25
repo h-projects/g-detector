@@ -13,5 +13,5 @@ To get ready to work on the codebase, please do the following:
 1. Fork & clone the repository, and make sure you're on the **main** branch
 2. Run `pnpm i --frozen-lockfile`
 3. Code!
-4. Run `pnpm lint`, `pnpm typecheck` and `pnpm test`
+4. Run `pnpm lint`, `pnpm check`, `pnpm typecheck` and `pnpm test`
 5. [Submit a pull request](https://github.com/h-projects/g-detector/compare)
