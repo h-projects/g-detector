@@ -5,11 +5,11 @@
   "scripts": {
     "test": "vitest run",
     "build": "tsup",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "check": "biome check .",
     "check:apply": "biome check --apply .",
     "format": "biome format --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit"
   },
   "main": "dist/index.js",
