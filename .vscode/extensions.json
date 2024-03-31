@@ -6,7 +6,6 @@
     "codezombiech.gitignore",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
-    "github.vscode-pull-request-github",
-    "vitest.explorer"
+    "github.vscode-pull-request-github"
   ]
 }
