@@ -3,7 +3,7 @@
   "version": "0.1.6",
   "description": "A powerful JavaScript library to detect the letter G",
   "scripts": {
-    "test": "tsx --test",
+    "test": "node --import tsx --test test/*.test.ts",
     "build": "tsup",
     "check": "biome check .",
     "check:apply": "biome check --apply .",
