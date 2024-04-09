@@ -2,15 +2,15 @@ import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
 import { Level, detect } from '../src/index.js';
 
-void describe('low detector', async () => {
-  await test('returns true on a g-only string', () => {
+describe('low detector', () => {
+  test('returns true on a g-only string', () => {
     assert.equal(detect('g', Level.Low), true);
     assert.equal(detect('gggggggg g', Level.Low), true);
     assert.equal(detect('g⅁ 🅶🅶🅶', Level.Low), true);
     assert.equal(detect('🅶🅖🄶🄖ｇＧꬶꞬꞡꞠℊḡḠᶢᶃᵹᵷᵍᴳʛǵǤ⅁ĜĝĞğɢɡɠƓģĢġĠgG⒢', Level.Low), true);
   });
 
-  await test('returns false on a non-g string', () => {
+  test('returns false on a non-g string', () => {
     assert.equal(detect('g-g', Level.Low), false);
     assert.equal(detect('greetings', Level.Low), false);
     assert.equal(detect('i think g is a letter', Level.Low), false);
@@ -22,8 +22,8 @@ void describe('low detector', async () => {
   });
 });
 
-void describe('medium detector', async () => {
-  await test('returns true on a string that has standalone g', () => {
+describe('medium detector', () => {
+  test('returns true on a string that has standalone g', () => {
     assert.equal(detect('g', Level.Medium), true);
     assert.equal(detect('g-g', Level.Medium), true);
     assert.equal(detect('g_eometry dash', Level.Medium), true);
@@ -33,7 +33,7 @@ void describe('medium detector', async () => {
     assert.equal(detect('g!asbot', Level.Medium), true);
   });
 
-  await test('returns false on a non-g string', () => {
+  test('returns false on a non-g string', () => {
     assert.equal(detect('greetings', Level.Medium), false);
     assert.equal(detect('hamburger', Level.Medium), false);
     assert.equal(detect('pogging', Level.Medium), false);
@@ -42,22 +42,22 @@ void describe('medium detector', async () => {
     assert.equal(detect('', Level.Medium), false);
   });
 
-  await test('whitelists substrings correctly', () => {
+  test('whitelists substrings correctly', () => {
     assert.equal(detect('g-spy', Level.Medium), false);
     assert.equal(detect('no u g-spy', Level.Medium), false);
     assert.equal(detect('this is a g-spy. g-spy says g. it wasnt very effective', Level.Medium), true);
   });
 });
 
-void describe('high detector', async () => {
-  await test('returns true on strings containing g', () => {
+describe('high detector', () => {
+  test('returns true on strings containing g', () => {
     assert.equal(detect('gg', Level.High), true);
     assert.equal(detect('gregory', Level.High), true);
     assert.equal(detect('germany', Level.High), true);
     assert.equal(detect('qwertyuiopasdf🇬h', Level.High), true);
   });
 
-  await test('returns false on strings not containing g', () => {
+  test('returns false on strings not containing g', () => {
     assert.equal(detect('HIIIIIIIIIIIIIIIIIIIIII', Level.High), false);
     assert.equal(detect('the real', Level.High), false);
     assert.equal(detect('. .', Level.High), false);
@@ -65,7 +65,7 @@ void describe('high detector', async () => {
     assert.equal(detect('', Level.High), false);
   });
 
-  await test('whitelists substrings correctly', () => {
+  test('whitelists substrings correctly', () => {
     assert.equal(detect('g-spy', Level.High), false);
     assert.equal(detect('no u g-spy', Level.High), false);
     assert.equal(detect('this is a g-spy. g-spy says g. it wasnt very effective', Level.High), true);
