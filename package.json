@@ -39,7 +39,7 @@
   "homepage": "https://github.com/h-projects/g-detector#readme",
   "devDependencies": {
     "@biomejs/biome": "^1.8.1",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.4.1",
     "tsup": "^8.1.0",
     "tsx": "^4.15.4",
     "typescript": "^5.4.5"
