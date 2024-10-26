@@ -19,5 +19,16 @@ export const allowlist = [
   'h is better than g',
   'hate g',
   'no g',
-  'school is g'
+  'school is g',
+  'never g',
+  'h tuah spit on that g',
+  'g is inherently evil',
+  'g vented',
+  'g sus',
+  'g is sus',
+  'g is imposter',
+  'g is impostor',
+  'g is the imposter',
+  'g is the impostor',
+  'g was k*lled in atlanta yesterday'
 ];
