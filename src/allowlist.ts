@@ -24,9 +24,11 @@ export const allowlist = [
   'h tuah spit on that g',
   'g is inherently evil',
   'g vented',
+  'g sus',
   'g is sus',
   'g is imposter',
   'g is impostor',
   'g is the imposter',
   'g is the impostor'
+  'g was k*lled in atlanta yesterday'
 ];
