@@ -29,6 +29,6 @@ export const allowlist = [
   'g is imposter',
   'g is impostor',
   'g is the imposter',
-  'g is the impostor'
+  'g is the impostor',
   'g was k*lled in atlanta yesterday'
 ];
