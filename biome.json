@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -23,35 +23,30 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noNewSymbol": "error",
         "noUndeclaredVariables": "error",
         "noUnusedPrivateClassMembers": "error",
-        "noUnusedVariables": "error"
+        "noUnusedVariables": "error",
+        "noInvalidBuiltinInstantiation": "error"
       },
       "style": {
         "noNegationElse": "error",
         "useBlockStatements": "error",
         "useConsistentArrayType": "error",
-        "useEnumInitializers": "off",
         "useForOf": "error",
         "useNodeAssertStrict": "error",
-        "useShorthandAssign": "error"
+        "useShorthandAssign": "error",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       },
       "suspicious": {
-        "noEmptyBlockStatements": "error",
-        "useAwait": "error"
+        "noEmptyBlockStatements": "error"
       }
     }
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "overrides": [
-    {
-      "include": ["package.json"],
-      "formatter": {
-        "lineWidth": 1
-      }
-    }
-  ]
+  }
 }

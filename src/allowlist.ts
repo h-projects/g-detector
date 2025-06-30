@@ -1,4 +1,4 @@
-export const allowlist = [
+export const allowlist: string[] = [
   'delete g',
   'every day, countless lives are lost by misuse of the letter g.',
   'fuck g',

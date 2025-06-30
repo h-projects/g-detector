@@ -1,4 +1,4 @@
-import { blocklist } from './blocklist.js';
+import { blocklist } from './blocklist.ts';
 
 export function checkLow(content: string): boolean {
   if (!/[^\s]/u.test(content)) {

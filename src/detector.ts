@@ -1,5 +1,5 @@
-import { allowlist } from './allowlist.js';
-import { checkHigh, checkLow, checkMedium } from './levels.js';
+import { allowlist } from './allowlist.ts';
+import { checkHigh, checkLow, checkMedium } from './levels.ts';
 
 export enum Level {
   Low,

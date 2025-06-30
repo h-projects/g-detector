@@ -9,13 +9,13 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
-
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "noEmitOnError": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
+    "isolatedDeclarations": true,
     "declaration": true,
+
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "skipLibCheck": true,
 
     "strict": true
   }

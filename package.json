@@ -3,21 +3,20 @@
   "version": "0.1.6",
   "description": "A powerful JavaScript library to detect the letter G",
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "check": "biome check",
     "format": "biome format --write",
     "lint": "biome lint",
     "lint:fix": "biome lint --fix --unsafe",
-    "test": "node --import tsx --test test/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "test": "node --experimental-transform-types --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "exports": {
     "import": "./dist/index.mjs",
-    "require": "./dist/index.js",
-    "types": "./dist/index.d.ts"
+    "require": "./dist/index.cjs"
   },
   "files": [
     "dist"
@@ -38,11 +37,10 @@
   },
   "homepage": "https://github.com/h-projects/g-detector#readme",
   "devDependencies": {
-    "@biomejs/biome": "^1.8.1",
-    "@types/node": "^20.14.2",
-    "tsup": "^8.1.0",
-    "tsx": "^4.15.4",
-    "typescript": "^5.4.5"
+    "@biomejs/biome": "^2.0.6",
+    "@types/node": "^24.0.7",
+    "tsdown": "^0.12.9",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=15.0.0"
@@ -51,5 +49,5 @@
     "access": "public",
     "provenance": true
   },
-  "packageManager": "pnpm@9.3.0"
+  "packageManager": "pnpm@10.12.4"
 }

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { Level, detect } from '../src/index.js';
+import { detect, Level } from '../src/index.ts';
 
 describe('low detector', () => {
   test('returns true on a g-only string', () => {
