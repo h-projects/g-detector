@@ -10,18 +10,15 @@ export enum Level {
 const SEPARATOR = /[.,ᅟᅠㅤﾠ]/gu;
 const ALLOWED_SENTENCES = RegExp(`(?<=^|\\P{L})(${allowlist.join('|')})(?=\\P{L}|$)`, 'giu');
 
-export function detect(content: string, level: Level | 'low' | 'medium' | 'high'): boolean {
+export function detect(content: string, level: Level): boolean {
   const cleanContent = content.replaceAll(SEPARATOR, '').replaceAll(ALLOWED_SENTENCES, '');
 
   switch (level) {
     case Level.Low:
-    case 'low':
       return checkLow(cleanContent);
     case Level.Medium:
-    case 'medium':
       return checkMedium(cleanContent);
     case Level.High:
-    case 'high':
       return checkHigh(cleanContent);
   }
 }
