@@ -7,11 +7,11 @@ export enum Level {
   High
 }
 
+const SEPARATOR = /[.,ᅟᅠㅤﾠ]/gu;
+const ALLOWED_SENTENCES = RegExp(`(?<=^|\\P{L})(${allowlist.join('|')})(?=\\P{L}|$)`, 'giu');
+
 export function detect(content: string, level: Level | 'low' | 'medium' | 'high'): boolean {
-  let cleanContent = content.replaceAll(/[.,ᅟᅠㅤﾠ]/gu, '').toLowerCase();
-  for (const word of allowlist) {
-    cleanContent = cleanContent.replaceAll(RegExp(`(?<=^|\\P{L})${word}(?=\\P{L}|$)`, 'giu'), '');
-  }
+  const cleanContent = content.replaceAll(SEPARATOR, '').replaceAll(ALLOWED_SENTENCES, '');
 
   switch (level) {
     case Level.Low:

@@ -1,17 +1,21 @@
 import { blocklist } from './blocklist.ts';
 
+const NOT_WHITESPACE = /[^\s]/u;
+const NOT_G = RegExp(`[^\\s${blocklist}]`, 'iu');
 export function checkLow(content: string): boolean {
-  if (!/[^\s]/u.test(content)) {
+  if (!NOT_WHITESPACE.test(content)) {
     return false;
   }
 
-  return !RegExp(`[^\\s${blocklist}]`, 'iu').test(content);
+  return !NOT_G.test(content);
 }
 
+const MEDIUM = RegExp(`(?<=^|\\P{L})[${blocklist}]+(?=\\P{L}|$)`, 'iu');
 export function checkMedium(content: string): boolean {
-  return RegExp(`(?<=^|\\P{L})[${blocklist}]+(?=\\P{L}|$)`, 'iu').test(content) || checkLow(content);
+  return MEDIUM.test(content) || checkLow(content);
 }
 
+const HIGH = RegExp(`[${blocklist}]`, 'iu');
 export function checkHigh(content: string): boolean {
-  return RegExp(`[${blocklist}]`, 'iu').test(content);
+  return HIGH.test(content);
 }

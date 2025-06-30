@@ -1,6 +1,6 @@
 export const allowlist: string[] = [
   'delete g',
-  'every day, countless lives are lost by misuse of the letter g.',
+  'every day countless lives are lost by misuse of the letter g',
   'fuck g',
   'g < h',
   'g annihilation squad',
@@ -30,5 +30,5 @@ export const allowlist: string[] = [
   'g is impostor',
   'g is the imposter',
   'g is the impostor',
-  'g was k*lled in atlanta yesterday'
+  'g was k\\*lled in atlanta yesterday'
 ];
