@@ -1,74 +1,78 @@
-import assert from 'node:assert/strict';
+import { equal } from 'node:assert/strict';
 import { describe, test } from 'node:test';
 import { detect, Level } from '../src/index.ts';
 
+function assertDetects(content: string, level: Level, expected: boolean) {
+  return equal(detect(content, level), expected, `Expected "${content}" to ${expected ? 'get' : 'not get'} detected`);
+}
+
 describe('low detector', () => {
   test('returns true on a g-only string', () => {
-    assert.equal(detect('g', Level.Low), true);
-    assert.equal(detect('gggggggg g', Level.Low), true);
-    assert.equal(detect('g⅁ 🅶🅶🅶', Level.Low), true);
-    assert.equal(detect('🅶🅖🄶🄖ｇＧꬶꞬꞡꞠℊḡḠᶢᶃᵹᵷᵍᴳʛǵǤ⅁ĜĝĞğɢɡɠƓģĢġĠgG⒢', Level.Low), true);
+    assertDetects('g', Level.Low, true);
+    assertDetects('gggggggg g', Level.Low, true);
+    assertDetects('g⅁ 🅶🅶🅶', Level.Low, true);
+    assertDetects('🅶🅖🄶🄖ｇＧꬶꞬꞡꞠℊḡḠᶢᶃᵹᵷᵍᴳʛǵǤ⅁ĜĝĞğɢɡɠƓģĢġĠgG⒢', Level.Low, true);
   });
 
   test('returns false on a non-g string', () => {
-    assert.equal(detect('g-g', Level.Low), false);
-    assert.equal(detect('greetings', Level.Low), false);
-    assert.equal(detect('i think g is a letter', Level.Low), false);
-    assert.equal(detect('the letter g', Level.Low), false);
-    assert.equal(detect('i love the letter h', Level.Low), false);
-    assert.equal(detect('. .', Level.Low), false);
-    assert.equal(detect(',', Level.Low), false);
-    assert.equal(detect('', Level.Low), false);
+    assertDetects('g-g', Level.Low, false);
+    assertDetects('greetings', Level.Low, false);
+    assertDetects('i think g is a letter', Level.Low, false);
+    assertDetects('the letter g', Level.Low, false);
+    assertDetects('i love the letter h', Level.Low, false);
+    assertDetects('. .', Level.Low, false);
+    assertDetects(',', Level.Low, false);
+    assertDetects('', Level.Low, false);
   });
 });
 
 describe('medium detector', () => {
   test('returns true on a string that has standalone g', () => {
-    assert.equal(detect('g', Level.Medium), true);
-    assert.equal(detect('g-g', Level.Medium), true);
-    assert.equal(detect('g_eometry dash', Level.Medium), true);
-    assert.equal(detect('weird unicode space characters: ᅟg ᅠg ㅤg ﾠg', Level.Medium), true);
-    assert.equal(detect('I AM A SPY. I LOVE G!!!', Level.Medium), true);
-    assert.equal(detect('the letter g tho', Level.Medium), true);
-    assert.equal(detect('g!asbot', Level.Medium), true);
+    assertDetects('g', Level.Medium, true);
+    assertDetects('g-g', Level.Medium, true);
+    assertDetects('g_eometry dash', Level.Medium, true);
+    assertDetects('weird unicode space characters: ᅟg ᅠg ㅤg ﾠg', Level.Medium, true);
+    assertDetects('I AM A SPY. I LOVE G!!!', Level.Medium, true);
+    assertDetects('the letter g tho', Level.Medium, true);
+    assertDetects('g!asbot', Level.Medium, true);
   });
 
   test('returns false on a non-g string', () => {
-    assert.equal(detect('greetings', Level.Medium), false);
-    assert.equal(detect('hamburger', Level.Medium), false);
-    assert.equal(detect('pogging', Level.Medium), false);
-    assert.equal(detect('. .', Level.Medium), false);
-    assert.equal(detect(',', Level.Medium), false);
-    assert.equal(detect('', Level.Medium), false);
+    assertDetects('greetings', Level.Medium, false);
+    assertDetects('hamburger', Level.Medium, false);
+    assertDetects('pogging', Level.Medium, false);
+    assertDetects('. .', Level.Medium, false);
+    assertDetects(',', Level.Medium, false);
+    assertDetects('', Level.Medium, false);
   });
 
   test('whitelists substrings correctly', () => {
-    assert.equal(detect('g-spy', Level.Medium), false);
-    assert.equal(detect('no u g-spy', Level.Medium), false);
-    assert.equal(detect('this is a g-spy. g-spy says g. it wasnt very effective', Level.Medium), true);
+    assertDetects('g-spy', Level.Medium, false);
+    assertDetects('no u g-spy', Level.Medium, false);
+    assertDetects('this is a g-spy. g-spy says g. it wasnt very effective', Level.Medium, true);
   });
 });
 
 describe('high detector', () => {
   test('returns true on strings containing g', () => {
-    assert.equal(detect('gg', Level.High), true);
-    assert.equal(detect('gregory', Level.High), true);
-    assert.equal(detect('germany', Level.High), true);
-    assert.equal(detect('qwertyuiopasdf🇬h', Level.High), true);
+    assertDetects('gg', Level.High, true);
+    assertDetects('gregory', Level.High, true);
+    assertDetects('germany', Level.High, true);
+    assertDetects('qwertyuiopasdf🇬h', Level.High, true);
   });
 
   test('returns false on strings not containing g', () => {
-    assert.equal(detect('HIIIIIIIIIIIIIIIIIIIIII', Level.High), false);
-    assert.equal(detect('the real', Level.High), false);
-    assert.equal(detect('. .', Level.High), false);
-    assert.equal(detect(',', Level.High), false);
-    assert.equal(detect('', Level.High), false);
+    assertDetects('HIIIIIIIIIIIIIIIIIIIIII', Level.High, false);
+    assertDetects('the real', Level.High, false);
+    assertDetects('. .', Level.High, false);
+    assertDetects(',', Level.High, false);
+    assertDetects('', Level.High, false);
   });
 
   test('whitelists substrings correctly', () => {
-    assert.equal(detect('g-spy', Level.High), false);
-    assert.equal(detect('no u g-spy', Level.High), false);
-    assert.equal(detect('this is a g-spy. g-spy says g. it wasnt very effective', Level.High), true);
-    assert.equal(detect('this is a g-spy. he doesnt like hamburger', Level.High), true);
+    assertDetects('g-spy', Level.High, false);
+    assertDetects('no u g-spy', Level.High, false);
+    assertDetects('this is a g-spy. g-spy says g. it wasnt very effective', Level.High, true);
+    assertDetects('this is a g-spy. he doesnt like hamburger', Level.High, true);
   });
 });
