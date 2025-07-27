@@ -18,16 +18,12 @@
     "import": "./dist/index.mjs",
     "require": "./dist/index.cjs"
   },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
   "author": "Superchupu",
   "license": "MIT",
-  "keywords": [
-    "gasbot",
-    "detector",
-    "h"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/h-projects/g-detector.git"

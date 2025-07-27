@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2022",
+    "target": "esnext",
     "lib": ["esnext"],
 
     "module": "esnext",
     "moduleResolution": "bundler",
 
-    "outDir": "dist",
-    "esModuleInterop": true,
     "verbatimModuleSyntax": true,
     "isolatedDeclarations": true,
     "declaration": true,

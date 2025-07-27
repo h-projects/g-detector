@@ -4,6 +4,5 @@ export default defineConfig({
   entry: ['src/index.ts'],
   fixedExtension: true,
   format: ['esm', 'cjs'],
-  sourcemap: true,
-  target: 'es2022'
+  sourcemap: true
 }) as UserConfig;
