@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "module": "nodenext",
     "lib": ["esnext"],
-
-    "module": "esnext",
-    "moduleResolution": "bundler",
 
     "verbatimModuleSyntax": true,
     "isolatedDeclarations": true,
