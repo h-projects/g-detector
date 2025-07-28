@@ -7,8 +7,8 @@ export enum Level {
   High
 }
 
-const SEPARATOR = /[.ᅟᅠㅤﾠ]/gu;
-const ALLOWED_SENTENCES = RegExp(`(?<=^|\\P{L})(${allowlist.join('|')})(?=\\P{L}|$)`, 'giu');
+const SEPARATOR = /[.ᅟᅠㅤﾠ]/gv;
+const ALLOWED_SENTENCES = RegExp(`(?<=^|\\P{L})(${allowlist.join('|')})(?=\\P{L}|$)`, 'giv');
 
 export function detect(content: string, level: Level): boolean {
   const cleanContent = content.replaceAll(SEPARATOR, '').replaceAll(ALLOWED_SENTENCES, '');
