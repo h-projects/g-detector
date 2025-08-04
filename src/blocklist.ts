@@ -1,4 +1,4 @@
-export const blocklist: string[] = [
+export const blocklist: readonly string[] = [
   'g',
   'ḡ',
   'ᵷ',
